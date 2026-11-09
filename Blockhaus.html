@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
 
 <meta charset="UTF-8">
-<meta name="google-site-verification" content="d1VKVFnqvuJ4ptv0RrHxzW4DCBm3WP8qXSfn6WKwvjk" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cartes et Documents - LesBlockhausLyssois</title>
 <link rel="stylesheet" href="style.css">
@@ -98,12 +97,12 @@ body {
     text-decoration: underline;
 }
 
-/* Carte Google Maps responsive */
+/* Carte uMap responsive : format paysage sur ordinateur */
 .map-container {
     position: relative;
     width: 100%;
-    padding-bottom: 66.67%;
     height: 0;
+    padding-bottom: 56.25%;
     overflow: hidden;
     margin: 20px 0;
     border-radius: 8px;
@@ -111,9 +110,41 @@ body {
 
 .map-container iframe {
     position: absolute;
+    inset: 0;
+    display: block;
     width: 100%;
     height: 100%;
-    border: none;
+    border: 0;
+}
+
+/* Sur mobile, la carte utilise presque toute la hauteur disponible */
+@media (max-width: 768px) {
+    .map-container {
+        width: 100%;
+        height: 70vh;
+        min-height: 420px;
+        max-height: 720px;
+        padding-bottom: 0;
+        margin: 14px 0;
+        border-radius: 6px;
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* Très petits écrans */
+@media (max-width: 480px) {
+    .map-container {
+        height: 72vh;
+        min-height: 380px;
+        max-height: 650px;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 4px;
+    }
 }
 
 /* Responsive */
@@ -219,7 +250,7 @@ body {
 
     <!-- Liste complète des blockhaus -->
     <div class="block-list" id="blockhausList" style="text-align:center;">
-        <a href="blockhaus/BEF46.html" target="_blank">Gueldre Road One (BEF 46) (Marcq en Baroeul)</a><br>
+     <a href="blockhaus/BEF46.html" target="_blank">Gueldre Road One (BEF 46) (Marcq en Baroeul)</a><br>
         <a href="blockhaus/BEF60.html" target="_blank">Pillbox "Bonanza"(BEF 60) (Marcq en Baroeul)</a><br>
         <a href="blockhaus/B242.html" target="_blank">Observatoire de Wervicq Nord(B242) (Halluin)</a><br>
         <a href="blockhaus/B243.html" target="_blank">Observatoire de Wervicq Sud(B243) (Halluin)</a><br>
@@ -294,25 +325,24 @@ body {
 
 <!-- SECTION 2 : LES CARTES -->
 <div id="cartes" class="section">
+    <h2>Carte du Secteur Fortifié de Lille :</h2>
+
+    <div class="map-container">
+        <iframe src="https://umap.openstreetmap.fr/fr/map/carte-sans-nom_1476134" title="Carte interactive du Secteur Fortifié de Lille" loading="lazy" allowfullscreen></iframe>
+    </div>
+
+    <h2>Carte du Secteur (images IGN 1950-60) :</h2>
+
+    <div class="map-container">
+        <iframe src="https://umap.openstreetmap.fr/fr/map/sfl-fond-ign-1950_1480487" title="Carte du Secteur Fortifié de Lille avec fond IGN 1950-60" loading="lazy" allowfullscreen></iframe>
+    </div>
+
+    <p><a href="docs/noscartes.html">Comment utiliser la carte ?</a></p>
+
     <h2>Documents cartographiques :</h2>
     <p><a href="aceuilcartes.html" target="_blank">Cliquez ICI pour voir nos documents cartographiques</a></p>
-    <h2>Le Secteur Fortifié de Lille :</h2>
-    <p><a href="https://docs.google.com/document/d/1Jzigg7uVxinlWrn8m_tWB7tfTqt_JpOJmFEapNo8b_Y/edit?usp=sharing">Comment utiliser nos cartes Google Earth ?</a></p>
-    <p>Carte complète du secteur fortifié de Lille : <a href="https://earth.google.com/earth/d/1DS-_KW_HaaLBEMzQVbN8XJyOlxAXzmBk?usp=sharing" target="_blank">Voir la carte</a> (La carte met environ 1 minute à charger)(google earth).</p>
-    <div class="map-container">
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1-b0ZMZydA9yhcX7NprLi-fHYq0XK078&ehbc=2E312F&noprof=1"></iframe>
-        </div>
-  
-    <p>Carte des barrages de routes mis en place en 1939 : <a href="https://earth.google.com/earth/d/1zXNP-yVn4g4KJrkl4nfkQ3MfAWrdNOnY?usp=sharing" target="_blank">Voir la carte</a>(google earth).</p>
-
     <p><a href="sources.html" target="_blank">Nos sources cartographiques</a></p>
-    
- </div>
-    
 </div>
-
-
-
 <!-- SECTION 4 : DEFINITIONS -->
 <div id="definitions" class="section">
     <h2 style="text-align:center;">Définitions</h2>
@@ -410,7 +440,3 @@ document.body.style.backgroundImage =
     ),
     url('${fondAleatoire}')`;
     </script>
-
-
-</body>
-</html>
